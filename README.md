@@ -3,6 +3,8 @@ CodeIgniter Pushover
 
 CodeIgniter Pushover Library
 
+Install this library with Sparks. http://getsparks.org/packages/Pushover/show
+
 	$this->load->spark('pushover/develop');
 	$this->pushover->initialize(array(
 		'app_key'	=> '<Application Key Here>',
