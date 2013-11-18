@@ -12,10 +12,21 @@ CodeIgniter Pushover Library
 	/**
 	 * Use a short hand method
 	 * $this->pushover->push(<message>, [title]);
+	 * 
+	 * Title is optional here
 	 */
 	
-	$result = $this->pushover->push('Whoo! Test');
+	$this->pushover->push('Whoo! Test', 'The title');
 	
-	
+	/**
+	 * Method that support any variable supported by Pushover
+	 */
+	 
+	$this->pushover->push(array(
+		'title'		=> 'This is the title',
+		'message'	=> 'Some message here....',
+		'device'	=> 'MyNexus',
+		'timestamp'	=> time(),
+	));
 
 You can predefined your keys in config/pushover.php
