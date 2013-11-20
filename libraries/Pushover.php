@@ -50,15 +50,25 @@ class Pushover
 		
 		$params['token'] = $this->config['app_key'];
 		$params['user'] = $this->config['user_key'];
-		
+
 		$result = $ci->curl->simple_post($this->endpoint . $uri . "." . $this->config['format'], $params);
 		
-		if (strtolower($this->config['format']) == 'json' AND $result)
+		if ($result)
 		{
-			return json_decode($result);
+			switch (strtolower($this->config['format']))
+			{
+				case 'json' :
+					return json_decode($result);
+					break;
+				case 'xml' :
+					return simplexml_load_string($result);
+					break;
+			}
 		}
-		
-		return $result;
+		else
+		{
+			return FALSE;
+		}
 	}
 
 }
